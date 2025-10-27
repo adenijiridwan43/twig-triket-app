@@ -1,0 +1,120 @@
+{# File: twig-app/templates/layout/base.html.twig #}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ pageTitle|default('Triket - Ticket Management') }}</title>
+    
+    {# Tailwind CSS CDN or compiled CSS #}
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/css/styles.css">
+    
+    <style>
+        /* Custom CSS matching React app */
+        :root {
+            --bg-1: #fffaf0;
+            --bg-2: #fff9f2;
+            --accent-1: #7c3aed;
+            --accent-2: #06b6d4;
+            --card-bg: #ffffff;
+            --muted: #6b7280;
+            --text: #0f1724;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            width: 100%;
+            background: #000000;
+            color: #ffffff;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+
+        .container {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        @media (min-width: 640px) {
+            .container { padding: 0 1.5rem; }
+        }
+
+        @media (min-width: 1024px) {
+            .container { padding: 0 2rem; }
+        }
+
+        .card-creative {
+            background: var(--card-bg);
+            border: 1px solid rgba(15,23,36,0.06);
+            border-radius: 14px;
+            padding: 1rem;
+            transition: transform .18s ease, box-shadow .18s ease;
+            box-shadow: 0 6px 18px rgba(15,23,36,0.06);
+        }
+
+        .card-creative:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(15,23,36,0.08);
+        }
+
+        .text-muted { color: var(--muted); }
+
+        /* Toast animation */
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .animate-slide-in-right {
+            animation: slideInRight 0.3s ease-out;
+        }
+
+        /* Loading spinner */
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #4F46E5;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen bg-black">
+    {# Header #}
+    {% include 'layout/header.html.twig' %}
+
+    {# Main Content #}
+    <main class="flex-1 w-full">
+        {% block content %}{% endblock %}
+    </main>
+
+    {# Footer #}
+    {% include 'layout/footer.html.twig' %}
+
+    {# Toast Container #}
+    <div id="toast-container" class="fixed top-4 right-4 z-50"></div>
+
+    {# Load Store #}
+    <script src="/js/store.js"></script>
+    
+    {# Page-specific JS #}
+    {% block scripts %}{% endblock %}
+    
+    {# Global Auth Check Script #}
+    <script src="/js/auth.js"></script>
+</body>
+</html>

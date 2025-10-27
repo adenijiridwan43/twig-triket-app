@@ -1,0 +1,176 @@
+{# File: twig-app/templates/pages/landing.html.twig #}
+{% extends 'layout/base.html.twig' %}
+
+{% block content %}
+<div class="overflow-x-hidden">
+    {# Hero Section with Wave #}
+    <section class="relative bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 pt-20 pb-32 lg:pt-28 lg:pb-40">
+        {# Decorative Circles #}
+        <div class="absolute top-20 right-10 w-64 h-64 bg-blue-500/20 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-32 left-10 w-96 h-96 bg-blue-400/10 rounded-full blur-3xl"></div>
+        
+        <div class="container relative z-10">
+            <div class="text-center max-w-4xl mx-auto">
+                <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
+                    The Effortless Way to Manage Your Customer Support
+                </h1>
+                <p class="text-xl md:text-2xl text-blue-100 mb-10 leading-relaxed">
+                    Triket is a simple, yet powerful ticket management system that helps you provide outstanding customer service.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="/auth/signup" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gray-800 text-white rounded-xl font-semibold hover:bg-gray-700 transition shadow-lg">
+                        Get Started
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                        </svg>
+                    </a>
+                    <a href="/auth/login" class="inline-flex items-center justify-center px-8 py-4 bg-transparent text-white rounded-xl font-semibold border-2 border-white/30 hover:bg-white/10 transition">
+                        Login
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        {# Wave SVG #}
+        <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
+            <svg class="relative block w-full h-24 md:h-32" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120" preserveAspectRatio="none">
+                <path fill="#000000" d="M0,64L48,69.3C96,75,192,85,288,80C384,75,480,53,576,48C672,43,768,53,864,64C960,75,1056,85,1152,80C1248,75,1344,53,1392,42.7L1440,32L1440,120L1392,120C1344,120,1248,120,1152,120C1056,120,960,120,864,120C768,120,672,120,576,120C480,120,384,120,288,120C192,120,96,120,48,120L0,120Z" />
+            </svg>
+        </div>
+    </section>
+
+    {# Features Section #}
+    <section id="features" class="py-20 lg:py-32 bg-black">
+        <div class="container">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">
+                    Everything you need, nothing you don't.
+                </h2>
+                <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+                    Triket is packed with features to help you streamline your customer support, without the clutter of enterprise software.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {# Feature 1 #}
+                <div class="bg-gray-900 border-2 border-gray-800 rounded-2xl p-8 hover:border-blue-600 transition-all duration-300 hover:-translate-y-2 shadow-xl hover:shadow-blue-500/20">
+                    <div class="w-16 h-16 bg-gradient-to-br from-blue-600 to-blue-700 rounded-xl flex items-center justify-center mb-6 shadow-lg shadow-blue-500/30">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-3">Easy Ticket Creation</h3>
+                    <p class="text-gray-400 leading-relaxed">Create, assign, and track tickets with ease. Our intuitive interface makes it simple to manage your support requests.</p>
+                </div>
+
+                {# Feature 2 #}
+                <div class="bg-gray-900 border-2 border-gray-800 rounded-2xl p-8 hover:border-blue-600 transition-all duration-300 hover:-translate-y-2 shadow-xl hover:shadow-blue-500/20">
+                    <div class="w-16 h-16 bg-gradient-to-br from-blue-600 to-blue-700 rounded-xl flex items-center justify-center mb-6 shadow-lg shadow-blue-500/30">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-3">Real-Time Collaboration</h3>
+                    <p class="text-gray-400 leading-relaxed">Work together with your team in real-time. Add notes, mention colleagues, and see updates as they happen.</p>
+                </div>
+
+                {# Feature 3 #}
+                <div class="bg-gray-900 border-2 border-gray-800 rounded-2xl p-8 hover:border-blue-600 transition-all duration-300 hover:-translate-y-2 shadow-xl hover:shadow-blue-500/20">
+                    <div class="w-16 h-16 bg-gradient-to-br from-blue-600 to-blue-700 rounded-xl flex items-center justify-center mb-6 shadow-lg shadow-blue-500/30">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-3">Powerful Reporting</h3>
+                    <p class="text-gray-400 leading-relaxed">Gain valuable insights into your support performance. Our reporting tools help you track metrics and identify areas for improvement.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {# Testimonials Section #}
+    <section id="testimonials" class="py-20 lg:py-32 bg-gray-950">
+        <div class="container">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">
+                    Loved by teams worldwide
+                </h2>
+                <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+                    See what our customers have to say about their experience with Triket.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-gray-900 border-2 border-gray-800 rounded-2xl p-8 hover:border-gray-700 transition-all duration-300 hover:-translate-y-1 shadow-xl">
+                    <svg class="w-8 h-8 text-blue-500 mb-4" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                    </svg>
+                    <p class="text-gray-300 mb-6 leading-relaxed italic">
+                        "Triket has revolutionized our customer support. It's so easy to use and has saved us countless hours of work."
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <div class="text-4xl">👩‍💼</div>
+                        <div>
+                            <p class="font-semibold text-white">Sarah L.</p>
+                            <p class="text-sm text-gray-500">Marketing Manager</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gray-900 border-2 border-gray-800 rounded-2xl p-8 hover:border-gray-700 transition-all duration-300 hover:-translate-y-1 shadow-xl">
+                    <svg class="w-8 h-8 text-blue-500 mb-4" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                    </svg>
+                    <p class="text-gray-300 mb-6 leading-relaxed italic">
+                        "I love the real-time collaboration features. It's so much easier to work with my team on complex tickets."
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <div class="text-4xl">👨‍💻</div>
+                        <div>
+                            <p class="font-semibold text-white">Michael B.</p>
+                            <p class="text-sm text-gray-500">Lead Developer</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gray-900 border-2 border-gray-800 rounded-2xl p-8 hover:border-gray-700 transition-all duration-300 hover:-translate-y-1 shadow-xl">
+                    <svg class="w-8 h-8 text-blue-500 mb-4" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                    </svg>
+                    <p class="text-gray-300 mb-6 leading-relaxed italic">
+                        "The reporting tools are a game-changer. I can finally see how my team is performing and where we can improve."
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <div class="text-4xl">👩‍🎓</div>
+                        <div>
+                            <p class="font-semibold text-white">Jessica T.</p>
+                            <p class="text-sm text-gray-500">Support Specialist</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {# CTA Section #}
+    <section class="py-20 lg:py-32 bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800">
+        <div class="container">
+            <div class="text-center max-w-3xl mx-auto">
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">
+                    Ready to get started?
+                </h2>
+                <p class="text-xl text-blue-100 mb-10">
+                    Join thousands of teams who trust Triket to manage their customer support.
+                </p>
+                <a href="/auth/signup" class="inline-flex items-center gap-2 px-8 py-4 bg-gray-800 text-white rounded-xl font-semibold hover:bg-gray-700 transition shadow-lg">
+                    Start Free Trial
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}

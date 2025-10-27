@@ -1,0 +1,98 @@
+{# File: twig-app/templates/layout/header.html.twig #}
+<header class="sticky top-0 z-40 bg-black/80 backdrop-blur-sm" id="main-header">
+    <div class="container">
+        <div class="flex items-center justify-between h-16">
+            {# Logo #}
+            <a href="/" class="text-xl md:text-2xl font-bold text-indigo-400">Triket</a>
+
+            {# Mobile Menu Toggle #}
+            <button
+                id="mobile-menu-toggle"
+                class="md:hidden p-2 text-white hover:text-indigo-400 bg-gray-800 rounded-lg"
+                aria-label="Toggle menu"
+            >
+                <svg id="menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+                <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+
+            {# Desktop Navigation #}
+            <nav id="desktop-nav" class="hidden md:flex items-center gap-6">
+                {# Will be populated by JavaScript based on auth state #}
+            </nav>
+        </div>
+
+        {# Mobile Navigation #}
+        <div id="mobile-nav" class="hidden md:hidden py-4 border-t border-white/10">
+            <nav class="flex flex-col items-start gap-4">
+                {# Will be populated by JavaScript #}
+            </nav>
+        </div>
+    </div>
+</header>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const store = window.ticketStore;
+    if (!store) return;
+
+    const desktopNav = document.getElementById('desktop-nav');
+    const mobileNav = document.getElementById('mobile-nav');
+    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+    const menuIcon = document.getElementById('menu-icon');
+    const closeIcon = document.getElementById('close-icon');
+
+    function renderNav() {
+        const state = store.getState();
+        const isAuth = state.isAuthenticated;
+
+        let navHTML = '';
+
+        if (isAuth) {
+            navHTML = `
+                <a href="/dashboard" class="text-white hover:text-indigo-400 transition">Dashboard</a>
+                <a href="/tickets" class="text-white hover:text-indigo-400 transition">Tickets</a>
+                <span class="text-sm text-white">Hi, ${state.user?.name || 'User'}!</span>
+                <button onclick="handleLogout()" class="flex items-center gap-2 text-red-400 hover:text-red-300 transition">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                    </svg>
+                    Logout
+                </button>
+            `;
+        } else {
+            navHTML = `
+                <a href="/auth/login" class="text-white hover:text-indigo-400 transition">Login</a>
+                <a href="/auth/signup" class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition">Sign Up</a>
+            `;
+        }
+
+        desktopNav.innerHTML = navHTML;
+        mobileNav.querySelector('nav').innerHTML = navHTML;
+    }
+
+    mobileMenuToggle.addEventListener('click', function() {
+        const isOpen = !mobileNav.classList.contains('hidden');
+        if (isOpen) {
+            mobileNav.classList.add('hidden');
+            menuIcon.classList.remove('hidden');
+            closeIcon.classList.add('hidden');
+        } else {
+            mobileNav.classList.remove('hidden');
+            menuIcon.classList.add('hidden');
+            closeIcon.classList.remove('hidden');
+        }
+    });
+
+    window.handleLogout = function() {
+        store.logout();
+        window.location.href = '/';
+    };
+
+    store.subscribe(renderNav);
+    renderNav();
+});
+</script>
